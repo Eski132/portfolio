@@ -13,7 +13,8 @@ nav{display:flex;justify-content:space-between;align-items:center;padding:18px 5
 .kicker{font-family:monospace;color:#7dff68;font-size:16px}.hero h1{font-size:clamp(64px,13vw,180px);line-height:.78;letter-spacing:-.08em;margin:20px 0;text-transform:uppercase}.hero h1 span{display:block;color:#ff2bd6;text-shadow:5px 5px 0 #1d35ff}.hero p{font-size:clamp(18px,2vw,28px);max-width:760px;font-weight:700}.rocket{font-size:clamp(160px,28vw,420px);filter:drop-shadow(18px 18px 0 #ff2bd6);animation:float 2.4s ease-in-out infinite alternate;transform:rotate(12deg);text-align:center}@keyframes float{to{transform:rotate(20deg) translateY(-24px)}}
 .buttons{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}.btn{display:inline-block;padding:14px 18px;border:3px solid #fff;background:#fff;color:#000;text-decoration:none;font-weight:900;box-shadow:7px 7px 0 #1d35ff}.btn.alt{background:#ff2bd6}.btn:hover{transform:translate(4px,4px);box-shadow:3px 3px 0 #1d35ff}
 .warning{padding:24px 5vw;background:#ffe500;color:#000;font-size:clamp(25px,4vw,56px);font-weight:1000;text-align:center;transform:rotate(-1deg);border-block:5px solid #000}
-section{padding:90px 5vw}.title{font-size:clamp(44px,8vw,110px);letter-spacing:-.06em;margin:0 0 40px}.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.card{border:3px solid #fff;padding:28px;min-height:320px;box-shadow:10px 10px 0 #ff2bd6;transition:.15s}.card:nth-child(2){box-shadow:10px 10px 0 #1d35ff}.card:nth-child(3){box-shadow:10px 10px 0 #7dff68}.card:hover{transform:rotate(-1.5deg) scale(1.02)}.card small{font-family:monospace;color:#7dff68}.card h2{font-size:34px;margin:55px 0 12px}.card p{color:#bbb;font-size:18px}.card a{font-weight:900}
+section{padding:90px 5vw}
+.live{padding:34px 5vw;border-block:3px dashed #ff2bd6;background:#0c0c0c}.live h2{margin:0 0 18px;font-size:clamp(30px,5vw,70px)}.thought{font:700 clamp(18px,2.2vw,28px)/1.5 monospace;color:#7dff68;min-height:2em}.thought:before{content:"> ";color:#ff2bd6}.chaos{display:flex;gap:9px;flex-wrap:wrap;margin-top:22px}.chaos span{border:2px solid #fff;padding:7px 10px;font:700 13px monospace;transform:rotate(var(--r))}.title{font-size:clamp(44px,8vw,110px);letter-spacing:-.06em;margin:0 0 40px}.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.card{border:3px solid #fff;padding:28px;min-height:320px;box-shadow:10px 10px 0 #ff2bd6;transition:.15s}.card:nth-child(2){box-shadow:10px 10px 0 #1d35ff}.card:nth-child(3){box-shadow:10px 10px 0 #7dff68}.card:hover{transform:rotate(-1.5deg) scale(1.02)}.card small{font-family:monospace;color:#7dff68}.card h2{font-size:34px;margin:55px 0 12px}.card p{color:#bbb;font-size:18px}.card a{font-weight:900}
 .stats{display:grid;grid-template-columns:repeat(4,1fr);border:3px solid #fff}.stat{padding:30px;border-right:3px solid #fff}.stat:last-child{border:0}.stat b{display:block;font-size:clamp(40px,6vw,80px);color:#ff2bd6}.stat span{font-family:monospace}
 .terminal{max-width:1000px;margin:auto;background:#0b0b0b;border:3px solid #7dff68;padding:25px;font:18px/1.7 monospace;box-shadow:14px 14px 0 #7dff68;color:#7dff68}.terminal .dim{color:#777}.terminal .white{color:#fff}
 footer{padding:70px 5vw 30px;text-align:center;border-top:3px solid #fff}footer h2{font-size:clamp(45px,10vw,130px);margin:0}footer p{font-family:monospace;color:#888}
@@ -30,6 +31,11 @@ footer{padding:70px 5vw 30px;text-align:center;border-top:3px solid #fff}footer 
 <div class="rocket" aria-label="rocket">🚀</div>
 </section>
 <div class="warning">IF U BE SERIOUS UR DEAD</div>
+<section class="live">
+<h2>WHAT AM I DOING RN?</h2>
+<div class="thought" id="thought">ehh coding this too...</div>
+<div class="chaos"><span style="--r:-2deg">EHH THIS TOO</span><span style="--r:2deg">EHH THAT TOO</span><span style="--r:-1deg">WAIT WHY?</span><span style="--r:3deg">PACMAN -S SOMETHING</span><span style="--r:-3deg">BREAKING PROD</span><span style="--r:1deg">FIXING WHAT I JUST BROKE</span></div>
+</section>
 <section id="crimes"><h2 class="title">selected crimes</h2><div class="cards">
 <article class="card"><small>01 // probably works</small><h2>Fanta</h2><p>system info without installing seventeen electron apps and sacrificing 4GB of RAM.</p><a href="https://github.com/Eski132/Fanta">inspect evidence ↗</a></article>
 <article class="card"><small>02 // recursive portfolio</small><h2>This website</h2><p>you are currently inside the project. there is no escape hatch. CSS has won.</p><a href="https://github.com/Eski132/portfolio">view source ↗</a></article>
@@ -42,6 +48,7 @@ footer{padding:70px 5vw 30px;text-align:center;border-top:3px solid #fff}footer 
 <button id="panic" onclick="panic()">PANIC BUTTON</button>
 <script>
 document.getElementById('year').textContent=new Date().getFullYear();
+const thoughts=["ehh coding this too...","ehh that too...","installing a package i will forget exists","rewriting it because the first version looked too normal","staring at terminal like it owes me money","sudo pacman -S random-thing","breaking something that worked 8 seconds ago","reading docs? absolutely not","git commit -m \"idk\"","making CSS worse on purpose","opening another terminal. this will help.","fixing one bug, spawning three","thinking about rewriting everything in Rust","rice first. functionality later.","WHY IS IT WORKING??","ctrl+c ctrl+c ctrl+c ctrl+c","adding a feature nobody requested"];let ti=0;setInterval(()=>{ti=(ti+1)%thoughts.length;document.getElementById("thought").textContent=thoughts[ti]},1800);
 let n=0;function panic(){n++;document.body.style.transform='rotate('+(n%2?'.35':'0')+'deg)';document.querySelector('#panic').textContent=n<4?'PANIC HARDER':'OK STOP';if(n===4){document.querySelector('.warning').textContent='YOU CLICKED IT FOUR TIMES. INCREDIBLE ENGINEERING.'}}
 </script>
 </body></html>
