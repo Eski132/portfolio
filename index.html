@@ -23,12 +23,11 @@ body {
 #bg {
     position: fixed;
     inset: 0;
-    margin: 0;
-    color: #333;
-    font: 10px/14px 'Press Start 2P', monospace;
-    overflow: hidden;
+    z-index: 9999;
     pointer-events: none;
-    user-select: none;
+    opacity: 0.15;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.95' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size: 150px 150px;
 }
 
 main {
@@ -60,20 +59,6 @@ main {
     color: #5555FF;
 }
 
-.content {
-    width: 100%;
-    margin: 0 auto;
-}
-
-.logo {
-    text-align: left;
-}
-
-.content p {
-    text-align: left;
-    margin: 20px 0;
-}
-
 </style>
 </head>
 
@@ -98,48 +83,5 @@ main {
 
     </div>
 </main>
-
-<script>
-const patterns = [
-    "20 64 65 72 6C 6F 67 6F ",
-    "20 20 20 20 20 20 20 20 ",
-    "5F 7C 20 20 7C 5F 20 20 ",
-    "5F 5F 5F 5F 20 5F 5F 20 ",
-    "2F 20 5F 20 20 2F 20 5F "
-];
-
-document.getElementById("bg").textContent =
-    Array.from({length: 200}, (_, i) =>
-        patterns[i % patterns.length].repeat(100)
-    ).join("\n");
-
-// Automatically fit the ASCII logo.
-const logo = document.querySelector(".logo");
-
-logo.innerHTML = logo.innerHTML
-    .split("\n")
-    .map(line => line.trimStart())
-    .join("\n")
-    .trim();
-
-function resizeLogo() {
-    const columns = Math.max(
-        ...logo.textContent.split("\n").map(line => line.length)
-    );
-
-    const width = logo.clientWidth;
-
-    logo.style.fontSize =
-        Math.min(16, width / (columns * 0.62)) + "px";
-}
-
-new ResizeObserver(resizeLogo).observe(
-    document.querySelector("main")
-);
-
-document.fonts.ready.then(resizeLogo);
-resizeLogo();
-</script>
-
 </body>
 </html>
